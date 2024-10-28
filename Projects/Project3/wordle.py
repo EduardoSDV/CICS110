@@ -3,13 +3,12 @@
 # Spire ID : 34750477
 import random
 
-
 def get_guess():
-    x = str(input())
+    x = str(input('Input your guess: '))
     return x.upper()
 
 def print_word(_string):
-    return ' '.join(_string)
+    print( ' '.join(_string))
 
 def exact_match_compare(x , y):
     t_arr = []
@@ -18,17 +17,26 @@ def exact_match_compare(x , y):
             t_arr.append( '🔴')
         else:
             t_arr.append( '🟢' )
+
     return ''.join(t_arr)
 
 def one_turn(x):
     guess = get_guess()
-    print(print_word(guess))
-    print(exact_match_compare(x,guess))
+    match_compare = exact_match_compare(x,guess)
+    print(' '.join(guess))
+    print(match_compare)
     if x == guess:
         print('Congratulations!')
+        exit()
+
 
 def make_solution():
     _list = ["WHICH", "THEIR", "THERE", "WOULD", "OTHER", "THESE", "ABOUT", "FIRST", "COULD", "AFTER"]
     return random.choice(_list)
 
-print(make_solution())
+print(get_guess())
+print(print_word(get_guess()))
+print(exact_match_compare('HELO','HELP'))
+print(one_turn('HELLO'))
+
+
