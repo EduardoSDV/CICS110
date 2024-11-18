@@ -1,8 +1,12 @@
-foo = {'model':'ipad', 'price':299}
-bar = foo
-
-foo = {'model':'chromebook', 'price':149}
-bar.clear()
-print(foo['price'])
-
-
+x = 10
+def most_mysterious_function(a):
+    try:
+        x = x+a
+    except:
+        global x
+        x =22
+    finally:
+        global x
+        x = 44
+most_mysterious_function(5)
+print(x)
