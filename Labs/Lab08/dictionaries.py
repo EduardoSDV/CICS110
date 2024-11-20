@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Author   : Eduardo Suarez del Valle
 # Email    : esuarez@umass.edu
 # Spire ID : 34750477
@@ -51,3 +52,5 @@ def count_bigrams(bigrm):
 
 
 
+=======
+>>>>>>> 6b3ee57ff10369fbf60d73d1e9cfef178ed22450
