@@ -2,6 +2,8 @@
 # Email    : esuarez@umass.edu
 # Spire ID : 34750477
 import csv
+import statistics
+import os
 
 def read_csv(fname):
     try:
@@ -28,13 +30,65 @@ def read_csv(fname):
         print(f"An unexpected error occurred: {e}")
         return None
 
-
 def write_csv(fname, student_data):
     try:
-        with open(fname , 'w' , newline= '') as file:
-            witer = csv.write(file)
+        with open(fname, 'w', newline='') as file:
+            writer = csv.writer(file)
+
             for student in student_data:
-                row = [student['name'], student['section'] + student['scores']]
+                name = student['name']
+                section = student['section']
+                scores = student['scores']
+
+                scores_str = ",".join(map(str, scores))
+
+                row = f"{name},{section},{scores_str}"
+                writer.writerow(row.split(","))
+
+
+    except Exception as e:
+        print(f"Error occurred when opening {fname} to write")
+        return
+
+def filter_section(student_data, section_name):
+    return [hashmap for hashmap in student_data if hashmap.get('section') == section_name]
+
+def filter_average(student_data ,min_inc ,max_exc ):
+
+    return [hashmap for hashmap in student_data if min_inc < statistics.mean(hashmap.get('scores')) <= max_exc]
+
+def split_section(fname):
+    student_data = read_csv(fname)
+    if student_data is None:
+        return None
+    name_file = os.path.splitext(fname)[0]
+
+    unique_sections = set(student['section'] for student in student_data)
+
+    for section in unique_sections:
+        section_data = filter_section(student_data, section)
+        output_fname = f"{name_file}_section_{section}.csv"
+        write_csv(output_fname, section_data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
