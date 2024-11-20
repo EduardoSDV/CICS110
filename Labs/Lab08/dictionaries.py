@@ -32,15 +32,21 @@ def average_prices(commodities):
         else:
             counts[name] = 1
 
-    average_price_dict = {name: total_prices[name] / counts[name] for name in total_prices}
+    average_price_dict = {}
+    for name in total_prices:
+        average_price_dict[name] = total_prices[name] / counts[name]
 
     return average_price_dict
 
 prices = (('a', 1.0), ('c', 4.2), ('b', 3.9), ('a', 1.2), ('d', 10.4), ('b', 4.3), ('b', 3.8))
 print(average_prices(prices))
 
-def count_bigrams(t):
-    bigrams_dict = dict()
+
+
+example_bigrams = ('hi', 'hello' , 'yes' , 'mine')
+def count_bigrams(bigrm):
+    
+
     pass
 
 
